@@ -39,16 +39,17 @@
         padding: 0;
       }
       #map {
-        /* border: 5px solid black; */
-        position: absolute;
+        border: 5px solid black;
+        /* position: absolute; */
+        height: 100vh;
         top: 0;
         bottom: 0;
-        width: 90%;
+        width: 100%;
       }
       .marker {
         background-color: red;
-        width: 15px;
-        height: 15px;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
         cursor: pointer;
       }
@@ -56,13 +57,13 @@
     <title>CSB Hackathon</title>
   </head>
   <body>
-    <section>
+    <section class="grid grid-cols-2 gap-4 w-full">
       <!-- search box -->
-      <div>
-        <input type="button" value="" />
+      <div class="w-full h-screen">
+        <p class="text-7xl">Logo</p>
       </div>
       <!-- map -->
-      <div id="map"></div>
+      <div id="map" class=""></div>
     </section>
     <script src="mapbox.js"></script>
   </body>

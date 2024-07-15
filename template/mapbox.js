@@ -2,11 +2,12 @@
 // ADD YOUR ACCESS TOKEN FROM
 // "pk.eyJ1Ijoia2Fpc2VyMjIyIiwiYSI6ImNsdTl2ZWNkZTBjYWkycXBpa3BzbXI0OXgifQ.oXZkscLAOekqYwMNcN5Qqw"
 // https://account.mapbox.com
-var pos;
-// USER location
+// var pos = [22.3575535, 91.7831068];
+var pos = [91.7831068, 22.3575535];
+// user location
 const successCallback = (position) => {
-  pos = [position.coords.latitude, position.coords.longitude];
-  console.log(pos);
+  console.log(position);
+  pos = [position.coords.longitude, position.coords.latitude];
 };
 
 const errorCallback = (error) => {
@@ -14,17 +15,18 @@ const errorCallback = (error) => {
 };
 
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
+const id = navigator.geolocation.watchPosition(successCallback, errorCallback);
+navigator.geolocation.clearWatch(id);
 const options = {
   enableHighAccuracy: true,
   timeout: 10000,
 };
+
 navigator.geolocation.getCurrentPosition(
   successCallback,
   errorCallback,
   options
 );
-
 // MAPBOX GL
 mapboxgl.accessToken =
   "pk.eyJ1Ijoia2Fpc2VyMjIyIiwiYSI6ImNsdTl2ZWNkZTBjYWkycXBpa3BzbXI0OXgifQ.oXZkscLAOekqYwMNcN5Qqw";
@@ -32,7 +34,7 @@ const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/outdoors-v12",
   center: pos, // starting position
-  zoom: 16,
+  zoom: 18,
   pitch: 65,
   bearing: -15.6,
   antialias: true,
@@ -50,7 +52,7 @@ const map = new mapboxgl.Map({
 
 // create a function to make a directions request
 async function getRoute(end) {
-  console.log(end[0], end[1]);
+  // console.log(end[0], end[1]);
   console.log(
     `https://api.mapbox.com/directions/v5/mapbox/cycling/${pos[0]},${pos[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`
   );
@@ -92,9 +94,9 @@ async function getRoute(end) {
         "line-cap": "round",
       },
       paint: {
-        "line-color": "#3887be",
-        "line-width": 5,
-        "line-opacity": 0.75,
+        "line-color": "#f30",
+        "line-width": 10,
+        "line-opacity": 1,
       },
     });
   }
