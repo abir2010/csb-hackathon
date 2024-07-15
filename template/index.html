@@ -1,70 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Tailwind CDN Link -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Edit the tailwind.config object to customize your configuration -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              clifford: "#da373d",
-            },
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CDN Link -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Edit the tailwind.config object to customize your configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: "#da373d",
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Arial', 'Helvetica', 'sans-serif'],
           },
         },
-      };
-    </script>
-    <!-- add custom CSS that supports all of Tailwind's CSS features. -->
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .content-auto {
-          content-visibility: auto;
-        }
+      },
+    };
+  </script>
+  <!-- add custom CSS that supports all of Tailwind's CSS features. -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
       }
-    </style>
-    <!-- Google Fonts Link -->
-    <!-- Google Icon Link -->
-    <!-- Mapbox GL Link -->
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
-    <link
-      href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        border: 5px solid black;
-        /* position: absolute; */
-        height: 100vh;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
-      .marker {
-        background-color: red;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        cursor: pointer;
-      }
-    </style>
-    <title>CSB Hackathon</title>
-  </head>
-  <body>
-    <section class="grid grid-cols-2 gap-4 w-full">
-      <!-- search box -->
-      <div class="w-full h-screen">
-        <p class="text-7xl">Logo</p>
+    }
+  </style>
+  <!-- Google Fonts Link for Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Mapbox GL Link -->
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      border: 5px solid black;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .marker {
+      background-color: red;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+  <title>CSB Hackathon</title>
+</head>
+
+<body class="font-sans">
+  <section class="grid grid-cols-3 gap-4 w-full h-screen overflow-hidden">
+    <!-- search box -->
+    <div class="col-span-1 w-full h-full mt-8 ml-10 px-5 flex flex-col overflow-y-auto">
+      <div>
+        <h2 class="text-7xl text-purple-900 font-bold">Logo</h2>
+        <p class="mt-2 text-2xl font-semibold">Lorem ipsum dolor sit</p>
+        <!-- input box -->
+        <label class="block">
+          <input type="email" name="email"
+            class="mt-8 px-3 py-4 bg-white border shadow-2xl border-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-sky-200 w-9/12 block rounded sm:text-sm focus:ring-1"
+            placeholder="Search products" />
+        </label>
       </div>
-      <!-- map -->
-      <div id="map" class=""></div>
-    </section>
-    <script src="mapbox.js"></script>
-  </body>
+      <h2 class="text-5xl mt-auto mb-15 text-purple-300 font-bold"><span>Hello</span> <br> <span>Welcome To</span> <br>
+        <span>Logo.</span>
+      </h2>
+      <button
+        class="mt-auto font-bold text-lg mb-20 px-2 py-4 bg-white border shadow-2xl border-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-sky-200 w-9/12 block rounded sm:text-sm flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6 mr-2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+        </svg>
+        <span>Login as Seller</span>
+      </button>
+
+    </div>
+    <!-- map -->
+    <div id="map" class="col-span-2"></div>
+  </section>
+  <script src="mapbox.js"></script>
+</body>
+
 </html>
