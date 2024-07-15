@@ -1,14 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Tailwind CDN Link -->
-     <!-- Google Fonts Link -->
-      <!-- Google Icon Link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Edit the tailwind.config object to customize your configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- add custom CSS that supports all of Tailwind's CSS features. -->
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <!-- Google Fonts Link -->
+    <!-- Google Icon Link -->
+    <!-- Mapbox GL Link -->
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        /* border: 5px solid black; */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 90%;
+      }
+      .marker {
+        background-color: red;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    </style>
     <title>CSB Hackathon</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <section>
+      <!-- search box -->
+      <div>
+        <input type="button" value="" />
+      </div>
+      <!-- map -->
+      <div id="map"></div>
+    </section>
+    <script src="mapbox.js"></script>
+  </body>
 </html>
