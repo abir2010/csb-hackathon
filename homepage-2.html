@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CDN Link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Edit the tailwind.config object to customize your configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: "#da373d",
+                        customPurple: 'rgb(88 29 135)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Arial', 'Helvetica', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <!-- add custom CSS that supports all of Tailwind's CSS features. -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+  </style>
+    <!-- Google Fonts Link for Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Mapbox GL Link -->
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            border: 5px solid black;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .marker {
+            background-color: red;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+    <title>CSB Hackathon</title>
+</head>
+
+<body class="font-sans">
+    <section class="grid grid-cols-3 gap-4 w-full h-screen overflow-hidden">
+        <!-- search box -->
+        <div class="col-span-1 w-full h-full mt-8 ml-10 px-5 flex flex-col overflow-y-auto">
+            <div>
+                <h2 class="text-7xl text-purple-900 font-bold">FIL</h2>
+                <p class="mt-2 text-2xl font-semibold">Find It Local</p>
+                <!-- input box -->
+                <label class="block">
+                    <input type="email" name="email"
+                        class="mt-8 px-3 py-4 bg-white border shadow-2xl border-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-sky-200 w-9/12 block rounded sm:text-sm focus:ring-1"
+                        placeholder="USB Charger" />
+                </label>
+                <button class="mt-8 px-7 bg-customPurple text-white px-4 py-2 rounded">Search</button>
+            </div>
+            <!-- card-1 -->
+            <div class="mt-12 flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-96">
+                <div class="flex items-center">
+                    <div class="bg-red-500 p-2 rounded-full">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 11a2 2 0 100-4 2 2 0 000 4z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <div class="text-lg font-semibold text-purple-700">Nova Electronics</div>
+                        <div class="text-sm text-gray-500">Distance: 0.2 km</div>
+                    </div>
+                </div>
+                <div>
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+            <!-- card-2 -->
+            <div class="mt-4 flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-96">
+                <div class="flex items-center">
+                    <div class="bg-red-500 p-2 rounded-full">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 11a2 2 0 100-4 2 2 0 000 4z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <div class="text-lg font-semibold text-purple-700">Gadget Shop</div>
+                        <div class="text-sm text-gray-500">Distance: 0.4 km</div>
+                    </div>
+                </div>
+                <div>
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- card-3 -->
+            <div class="mt-4 flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-96">
+                <div class="flex items-center">
+                    <div class="bg-red-500 p-2 rounded-full">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 11a2 2 0 100-4 2 2 0 000 4z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <div class="text-lg font-semibold text-purple-700">Gadget n Gadget</div>
+                        <div class="text-sm text-gray-500">Distance: 0.7 km</div>
+                    </div>
+                </div>
+                <div>
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- card-4 -->
+            <div class="mt-4 flex items-center justify-between p-4 bg-white rounded-lg shadow-md w-96">
+                <div class="flex items-center">
+                    <div class="bg-red-500 p-2 rounded-full">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 11a2 2 0 100-4 2 2 0 000 4z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <div class="text-lg font-semibold text-purple-700">Apple Electronics</div>
+                        <div class="text-sm text-gray-500">Distance: 1.1 km</div>
+                    </div>
+                </div>
+                <div>
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- map -->
+        <div id="map" class="col-span-2"></div>
+    </section>
+    <script src="template/mapbox.js"></script>
+</body>
+
+</html>
